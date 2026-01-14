@@ -15,13 +15,13 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ifybeads.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ifvybeads.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ify Beads | Handcrafted Bead Bags",
-    template: "%s | Ify Beads",
+    default: "Ifvy Beads | Handcrafted Bead Bags",
+    template: "%s | Ifvy Beads",
   },
   description:
     "Discover exquisite handcrafted bead bags made with love. Each piece is unique and tells a story. Shop our collection of stunning bead bags from Nigeria.",
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     "unique handbags",
     "statement bags",
     "evening bags",
-    "Ify Beads",
+    "Ifvy Beads",
   ],
-  authors: [{ name: "Ify Beads" }],
-  creator: "Ify Beads",
-  publisher: "Ify Beads",
+  authors: [{ name: "Ifvy Beads" }],
+  creator: "Ifvy Beads",
+  publisher: "Ifvy Beads",
   formatDetection: {
     email: false,
     address: false,
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Ify Beads",
-    title: "Ify Beads | Handcrafted Bead Bags",
+    siteName: "Ifvy Beads",
+    title: "Ifvy Beads | Handcrafted Bead Bags",
     description:
       "Discover exquisite handcrafted bead bags made with love. Each piece is unique and tells a story.",
     images: [
@@ -61,17 +61,17 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ify Beads - Handcrafted Bead Bags",
+        alt: "Ifvy Beads - Handcrafted Bead Bags",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ify Beads | Handcrafted Bead Bags",
+    title: "Ifvy Beads | Handcrafted Bead Bags",
     description:
       "Discover exquisite handcrafted bead bags made with love. Each piece is unique and tells a story.",
     images: ["/twitter-image"],
-    creator: "@ifybeads",
+    creator: "@ifvybeads",
   },
   robots: {
     index: true,
@@ -108,7 +108,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Ify Beads",
+    name: "Ifvy Beads",
     url: siteUrl,
     logo: `${siteUrl}/apple-icon`,
     description:
@@ -124,7 +124,7 @@ export default function RootLayout({
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Ify Beads",
+    name: "Ifvy Beads",
     url: siteUrl,
     potentialAction: {
       "@type": "SearchAction",

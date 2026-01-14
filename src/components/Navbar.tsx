@@ -23,7 +23,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <Sparkles className="w-6 h-6 text-gold-500 group-hover:rotate-12 transition-transform" />
             <span className="font-display text-2xl md:text-3xl font-bold text-brand-800 tracking-tight">
-              Ify Beads
+              Ifvy Beads
             </span>
           </Link>
 

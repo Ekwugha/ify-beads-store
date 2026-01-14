@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Ify Beads - Handcrafted Bead Bags",
-    short_name: "Ify Beads",
+    name: "Ifvy Beads - Handcrafted Bead Bags",
+    short_name: "Ifvy Beads",
     description:
       "Discover exquisite handcrafted bead bags made with love. Each piece is unique and tells a story. Shop our collection of stunning bead bags.",
     start_url: "/",

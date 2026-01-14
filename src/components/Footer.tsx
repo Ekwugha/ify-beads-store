@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Sparkles className="w-6 h-6 text-gold-400" />
-              <span className="font-display text-2xl font-bold">Ify Beads</span>
+              <span className="font-display text-2xl font-bold">Ifvy Beads</span>
             </Link>
             <p className="text-brand-200 font-body leading-relaxed">
               Handcrafted bead bags made with love and attention to detail. 
@@ -69,20 +69,20 @@ export default function Footer() {
                 <span>WhatsApp</span>
               </a>
               <a
-                href="https://instagram.com/ifybeads"
+                href="https://instagram.com/ifvybeads"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-brand-200 hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
-                <span>@ifybeads</span>
+                <span>@ifvybeads</span>
               </a>
               <a
-                href="mailto:hello@ifybeads.com"
+                href="mailto:ifvybeads@gmail.com"
                 className="flex items-center gap-3 text-brand-200 hover:text-white transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span>hello@ifybeads.com</span>
+                <span>ifvybeads@gmail.com</span>
               </a>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-brand-700 text-center">
           <p className="text-brand-300 font-body text-sm">
-            © {new Date().getFullYear()} Ify Beads. All rights reserved. Made with ❤️
+            © {new Date().getFullYear()} Ifvy Beads. All rights reserved. Made with ❤️
           </p>
         </div>
       </div>

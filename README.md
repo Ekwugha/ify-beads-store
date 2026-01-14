@@ -1,8 +1,8 @@
-# Ify Beads - Handcrafted Bead Bags Store
+# Ifvy Beads - Handcrafted Bead Bags Store
 
 A beautiful, modern e-commerce web application for selling handcrafted bead bags. Built with Next.js 14, TypeScript, Tailwind CSS, Framer Motion, and Firebase.
 
-![Ify Beads](https://via.placeholder.com/800x400?text=Ify+Beads)
+![Ifvy Beads](https://via.placeholder.com/800x400?text=Ify+Beads)
 
 ## ✨ Features
 
@@ -47,7 +47,7 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 ### 1. Clone and Install
 
 ```bash
-cd ify-beads
+cd ifvy-beads
 npm install
 ```
 
@@ -129,7 +129,7 @@ Access the admin panel at [http://localhost:3000/admin](http://localhost:3000/ad
 ## 📁 Project Structure
 
 ```
-ify-beads/
+ifvy-beads/
 ├── src/
 │   ├── app/
 │   │   ├── admin/          # Admin panel
@@ -227,7 +227,7 @@ MIT License - feel free to use this for your business!
 
 ## 💖 Credits
 
-Built with love for Ify Beads
+Built with love for Ifvy Beads
 
 ---
 

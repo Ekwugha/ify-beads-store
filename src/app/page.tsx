@@ -133,7 +133,7 @@ export default function HomePage() {
               >
                 <Sparkles className="w-8 h-8 text-gold-400 mx-auto mb-4" />
                 <h2 className="font-display text-3xl md:text-4xl font-bold">
-                  Why Choose Ify Beads?
+                  Why Choose Ifvy Beads?
                 </h2>
               </motion.div>
 

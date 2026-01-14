@@ -18,7 +18,7 @@ import { Product } from "@/types/product";
 import { getAllProducts } from "@/lib/products";
 import { isFirebaseConfigured } from "@/lib/firebase";
 
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "ifybeads2024";
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "ifvybeads2024";
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -30,7 +30,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     // Check if already authenticated
-    const savedAuth = sessionStorage.getItem("ifybeads_admin_auth");
+    const savedAuth = sessionStorage.getItem("ifvybeads_admin_auth");
     if (savedAuth === "true") {
       setIsAuthenticated(true);
     }
@@ -60,7 +60,7 @@ export default function AdminPage() {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
-      sessionStorage.setItem("ifybeads_admin_auth", "true");
+      sessionStorage.setItem("ifvybeads_admin_auth", "true");
       toast.success("Welcome back!");
     } else {
       toast.error("Incorrect password");
@@ -69,7 +69,7 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    sessionStorage.removeItem("ifybeads_admin_auth");
+    sessionStorage.removeItem("ifvybeads_admin_auth");
     setPassword("");
     toast.success("Logged out successfully");
   };
@@ -139,7 +139,7 @@ export default function AdminPage() {
           <div className="text-center mb-8">
             <Sparkles className="w-12 h-12 text-gold-400 mx-auto mb-4" />
             <h1 className="font-display text-3xl font-bold text-white">
-              Ify Beads Admin
+              Ifvy Beads Admin
             </h1>
             <p className="font-body text-brand-200 mt-2">
               Enter password to manage your store
@@ -188,7 +188,7 @@ export default function AdminPage() {
             <div className="flex items-center gap-3">
               <Sparkles className="w-6 h-6 text-gold-400" />
               <span className="font-display text-xl font-bold">
-                Ify Beads Admin
+                Ifvy Beads Admin
               </span>
             </div>
 

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Ify Beads - Handcrafted Bead Bags";
+export const alt = "Ifvy Beads - Handcrafted Bead Bags";
 
 export const size = {
   width: 1200,
@@ -130,7 +130,7 @@ export default function TwitterImage() {
               fontFamily: "serif",
             }}
           >
-            Ify Beads
+            Ifvy Beads
           </div>
 
           {/* Tagline */}

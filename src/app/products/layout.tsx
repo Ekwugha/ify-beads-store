@@ -5,14 +5,14 @@ export const metadata: Metadata = {
   description:
     "Browse our stunning collection of handcrafted bead bags. From elegant evening bags to statement pieces, find your perfect beaded accessory. Shop new arrivals, sale items, and limited edition bags.",
   openGraph: {
-    title: "Shop Handcrafted Bead Bags | Ify Beads",
+    title: "Shop Handcrafted Bead Bags | Ifvy Beads",
     description:
       "Browse our stunning collection of handcrafted bead bags. From elegant evening bags to statement pieces.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shop Handcrafted Bead Bags | Ify Beads",
+    title: "Shop Handcrafted Bead Bags | Ifvy Beads",
     description:
       "Browse our stunning collection of handcrafted bead bags. From elegant evening bags to statement pieces.",
   },
