@@ -19,6 +19,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ifvybeads.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+  },
   title: {
     default: "Ifvy Beads | Handcrafted Bead Bags",
     template: "%s | Ifvy Beads",
@@ -136,8 +140,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/icon" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/icon" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon" />
+        <link rel="shortcut icon" href="/icon" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

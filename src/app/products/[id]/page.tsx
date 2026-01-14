@@ -270,7 +270,13 @@ export default function ProductDetailPage() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 {!product.isSoldOut ? (
                   <motion.a
-                    href={generateWhatsAppUrl(product.name)}
+                    href={generateWhatsAppUrl(
+                      product.name,
+                      product.id,
+                      product.imageUrl,
+                      product.price,
+                      product.salePrice
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}

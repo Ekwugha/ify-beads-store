@@ -118,7 +118,13 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* WhatsApp Button */}
           {!product.isSoldOut && (
             <motion.a
-              href={generateWhatsAppUrl(product.name)}
+              href={generateWhatsAppUrl(
+                product.name,
+                product.id,
+                product.imageUrl,
+                product.price,
+                product.salePrice
+              )}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
