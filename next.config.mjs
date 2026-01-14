@@ -6,12 +6,12 @@ const nextConfig = {
         protocol: "https",
         hostname: "**",
       },
-      {
-        protocol: "http",
-        hostname: "**",
-      },
     ],
   },
+  // Production optimizations
+  poweredByHeader: false,
+  compress: true,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

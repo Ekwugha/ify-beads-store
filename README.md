@@ -16,6 +16,15 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 - 📱 Mobile-first responsive design
 - 💬 WhatsApp integration for easy ordering
 
+### SEO & Production Ready
+- 🎨 Dynamic favicon and Apple touch icons
+- 📸 OpenGraph and Twitter cards for social sharing
+- 🗺️ Auto-generated sitemap.xml
+- 🤖 SEO-optimized robots.txt
+- 📱 Progressive Web App (PWA) manifest
+- 🔍 Structured data (JSON-LD) for rich search results
+- 🏷️ Comprehensive meta tags on all pages
+
 ### Admin Features
 - 🔐 Password-protected admin panel (`/admin`)
 - ➕ Add new products with image upload
@@ -102,6 +111,9 @@ NEXT_PUBLIC_ADMIN_PASSWORD=your_secure_password
 
 # WhatsApp Number (with country code, no + or spaces)
 NEXT_PUBLIC_WHATSAPP_NUMBER=2348012345678
+
+# Site URL (for SEO meta tags - set your deployed URL)
+NEXT_PUBLIC_SITE_URL=https://ifybeads.com
 ```
 
 ### 4. Run the Development Server
