@@ -10,7 +10,7 @@ export function formatPrice(price: number): string {
 
 // Generate WhatsApp URL
 export function generateWhatsAppUrl(productName: string): string {
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348012345678";
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348130106423";
   const message = encodeURIComponent(
     `Hi 👋 I want to buy the bead bag: ${productName}`
   );

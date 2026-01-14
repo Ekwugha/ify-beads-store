@@ -60,7 +60,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 font-body">
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348012345678"}`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348130106423"}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-brand-200 hover:text-white transition-colors"

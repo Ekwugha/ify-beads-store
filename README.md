@@ -7,6 +7,7 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 ## ✨ Features
 
 ### Customer Features
+
 - 🛍️ Beautiful product catalog with glassmorphism cards
 - 🔍 Search and filter products
 - 🏷️ Sale badges with discount percentages
@@ -17,6 +18,7 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 - 💬 WhatsApp integration for easy ordering
 
 ### SEO & Production Ready
+
 - 🎨 Dynamic favicon and Apple touch icons
 - 📸 OpenGraph and Twitter cards for social sharing
 - 🗺️ Auto-generated sitemap.xml
@@ -26,6 +28,7 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 - 🏷️ Comprehensive meta tags on all pages
 
 ### Admin Features
+
 - 🔐 Password-protected admin panel (`/admin`)
 - ➕ Add new products with image upload
 - ✏️ Edit existing products
@@ -41,6 +44,7 @@ A beautiful, modern e-commerce web application for selling handcrafted bead bags
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ installed
 - A Firebase account (free Spark plan works!)
 
@@ -110,7 +114,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 NEXT_PUBLIC_ADMIN_PASSWORD=your_secure_password
 
 # WhatsApp Number (with country code, no + or spaces)
-NEXT_PUBLIC_WHATSAPP_NUMBER=2348012345678
+NEXT_PUBLIC_WHATSAPP_NUMBER=234XXXXXXXXXX
 
 # Site URL (for SEO meta tags - set your deployed URL)
 NEXT_PUBLIC_SITE_URL=https://ifybeads.com
@@ -161,6 +165,7 @@ ifvy-beads/
 ## 🎨 Customization
 
 ### Colors
+
 Edit `tailwind.config.ts` to change the brand colors:
 
 ```ts
@@ -175,16 +180,20 @@ colors: {
 ```
 
 ### Fonts
+
 The app uses:
+
 - **Playfair Display** for headings
 - **Outfit** for body text
 
 Change fonts in `src/app/layout.tsx`.
 
 ### WhatsApp Number
+
 Update `NEXT_PUBLIC_WHATSAPP_NUMBER` in your `.env.local` file.
 
 ### Admin Password
+
 Update `NEXT_PUBLIC_ADMIN_PASSWORD` in your `.env.local` file.
 
 ## 🚢 Deployment
@@ -232,4 +241,3 @@ Built with love for Ifvy Beads
 ---
 
 **Need help?** Contact your developer or create an issue on GitHub.
-
