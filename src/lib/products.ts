@@ -12,7 +12,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
-import { db, storage, isFirebaseConfigured } from "./firebase";
+import { db, storage, isFirebaseConfigured, isStorageConfigured } from "./firebase";
 import { Product, ProductFormData } from "@/types/product";
 
 // Helper to check Firebase configuration
@@ -182,6 +182,12 @@ export async function deleteProduct(id: string, imageUrl?: string): Promise<void
 
 // Upload image to Firebase Storage
 export async function uploadProductImage(file: File): Promise<string> {
+  if (!isStorageConfigured) {
+    throw new Error(
+      "Firebase Storage is not configured. Please use an external image hosting service like imgbb.com instead."
+    );
+  }
+  
   const timestamp = Date.now();
   const fileName = `products/${timestamp}_${file.name.replace(/[^a-zA-Z0-9.]/g, "_")}`;
   const storageRef = ref(storage, fileName);

@@ -12,12 +12,14 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Check if Firebase is properly configured
+// Check if Firebase is properly configured (storage is optional)
 export const isFirebaseConfigured = Boolean(
   firebaseConfig.apiKey &&
-  firebaseConfig.projectId &&
-  firebaseConfig.storageBucket
+  firebaseConfig.projectId
 );
+
+// Check if Firebase Storage is configured
+export const isStorageConfigured = Boolean(firebaseConfig.storageBucket);
 
 if (!isFirebaseConfigured && typeof window !== "undefined") {
   console.error(

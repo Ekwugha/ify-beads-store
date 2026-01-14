@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { X, Upload, Loader2, ImagePlus, Trash2 } from "lucide-react";
+import { X, Loader2, ImagePlus, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { Product, ProductFormData, defaultProductFormData } from "@/types/product";
 import { addProduct, updateProduct, uploadProductImage, deleteProductImage } from "@/lib/products";
@@ -204,71 +204,21 @@ export default function ProductFormModal({
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Image Upload */}
+          {/* Image Input */}
           <div>
             <label className="block font-body font-semibold text-brand-900 mb-2">
               Product Image
             </label>
-            <div className="relative">
-              {imagePreview ? (
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-brand-100">
-                  <Image
-                    src={imagePreview}
-                    alt="Preview"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, 640px"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="p-3 bg-white rounded-full text-brand-900 hover:bg-brand-50 transition-colors"
-                    >
-                      <ImagePlus className="w-5 h-5" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleRemoveImage}
-                      className="p-3 bg-red-500 rounded-full text-white hover:bg-red-600 transition-colors"
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="w-full aspect-video rounded-2xl border-2 border-dashed border-brand-200 hover:border-brand-400 bg-brand-50 hover:bg-brand-100 flex flex-col items-center justify-center gap-3 transition-colors"
-                >
-                  <Upload className="w-10 h-10 text-brand-400" />
-                  <span className="font-body text-brand-600">
-                    Click to upload image
-                  </span>
-                  <span className="font-body text-sm text-brand-400">
-                    PNG, JPG, GIF up to 5MB
-                  </span>
-                </button>
-              )}
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleImageSelect}
-                className="hidden"
-              />
-            </div>
             
-            {/* Alternative: Image URL */}
-            <div className="mt-3">
-              <p className="font-body text-sm text-brand-500 mb-2">
-                Or paste an image URL:
+            {/* Image URL Input - Primary Method */}
+            <div className="mb-4">
+              <p className="font-body text-sm text-brand-600 mb-2">
+                📸 Upload your image to <a href="https://imgbb.com/" target="_blank" rel="noopener noreferrer" className="text-brand-700 underline font-semibold">imgbb.com</a> (free), then paste the direct link:
               </p>
               <input
                 type="url"
-                placeholder="https://example.com/image.jpg"
-                value={formData.imageUrl && !imageFile ? formData.imageUrl : ""}
+                placeholder="https://i.ibb.co/xxxxx/your-image.jpg"
+                value={formData.imageUrl || ""}
                 onChange={(e) => {
                   const url = e.target.value;
                   setFormData((prev) => ({ ...prev, imageUrl: url }));
@@ -279,9 +229,52 @@ export default function ProductFormModal({
                     setImagePreview(null);
                   }
                 }}
-                className="w-full px-4 py-2 bg-brand-50 border border-brand-200 rounded-xl font-body text-sm text-brand-900 placeholder:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+                className="w-full px-4 py-3 bg-brand-50 border border-brand-200 rounded-xl font-body text-brand-900 placeholder:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
               />
+              <p className="font-body text-xs text-brand-400 mt-2">
+                💡 Tip: On imgbb.com, after uploading click "Get codes" → copy "Direct link"
+              </p>
             </div>
+
+            {/* Image Preview */}
+            {imagePreview ? (
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-brand-100">
+                <Image
+                  src={imagePreview}
+                  alt="Preview"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 640px"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setImagePreview(null);
+                    setFormData((prev) => ({ ...prev, imageUrl: "" }));
+                    setImageFile(null);
+                  }}
+                  className="absolute top-3 right-3 p-2 bg-red-500 rounded-full text-white hover:bg-red-600 transition-colors shadow-lg"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <div className="aspect-video rounded-2xl border-2 border-dashed border-brand-200 bg-brand-50 flex flex-col items-center justify-center gap-2">
+                <ImagePlus className="w-10 h-10 text-brand-300" />
+                <span className="font-body text-brand-400 text-sm">
+                  Image preview will appear here
+                </span>
+              </div>
+            )}
+
+            {/* Hidden file input - keep for future if Firebase Storage is added */}
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleImageSelect}
+              className="hidden"
+            />
           </div>
 
           {/* Name */}
