@@ -12,8 +12,17 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
-import { db, storage } from "./firebase";
+import { db, storage, isFirebaseConfigured } from "./firebase";
 import { Product, ProductFormData } from "@/types/product";
+
+// Helper to check Firebase configuration
+function checkFirebaseConfig() {
+  if (!isFirebaseConfigured) {
+    throw new Error(
+      "Firebase is not configured. Please add your Firebase environment variables to Vercel."
+    );
+  }
+}
 
 const COLLECTION_NAME = "products";
 
@@ -40,9 +49,21 @@ const convertDoc = (doc: any): Product => {
 
 // Get all products
 export async function getAllProducts(): Promise<Product[]> {
-  const q = query(collection(db, COLLECTION_NAME), orderBy("createdAt", "desc"));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(convertDoc);
+  checkFirebaseConfig();
+  try {
+    const q = query(collection(db, COLLECTION_NAME), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(convertDoc);
+  } catch (error: any) {
+    console.error("Error fetching products:", error);
+    if (error.code === "failed-precondition") {
+      throw new Error("Database index required. Please check Firebase console for index creation link.");
+    }
+    if (error.code === "permission-denied") {
+      throw new Error("Permission denied. Please check your Firestore security rules.");
+    }
+    throw error;
+  }
 }
 
 // Get featured products
@@ -102,27 +123,45 @@ function cleanData(obj: Record<string, any>): Record<string, any> {
 
 // Add a new product
 export async function addProduct(data: ProductFormData): Promise<string> {
-  const cleanedData = cleanData({
-    ...data,
-    salePrice: data.isOnSale && data.salePrice ? data.salePrice : null,
-    createdAt: Timestamp.now(),
-    updatedAt: Timestamp.now(),
-  });
-  
-  const docRef = await addDoc(collection(db, COLLECTION_NAME), cleanedData);
-  return docRef.id;
+  checkFirebaseConfig();
+  try {
+    const cleanedData = cleanData({
+      ...data,
+      salePrice: data.isOnSale && data.salePrice ? data.salePrice : null,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+    });
+    
+    const docRef = await addDoc(collection(db, COLLECTION_NAME), cleanedData);
+    return docRef.id;
+  } catch (error: any) {
+    console.error("Error adding product:", error);
+    if (error.code === "permission-denied") {
+      throw new Error("Permission denied. Please check your Firestore security rules allow writes.");
+    }
+    throw error;
+  }
 }
 
 // Update a product
 export async function updateProduct(id: string, data: Partial<ProductFormData>): Promise<void> {
-  const docRef = doc(db, COLLECTION_NAME, id);
-  const cleanedData = cleanData({
-    ...data,
-    salePrice: data.isOnSale && data.salePrice ? data.salePrice : null,
-    updatedAt: Timestamp.now(),
-  });
-  
-  await updateDoc(docRef, cleanedData);
+  checkFirebaseConfig();
+  try {
+    const docRef = doc(db, COLLECTION_NAME, id);
+    const cleanedData = cleanData({
+      ...data,
+      salePrice: data.isOnSale && data.salePrice ? data.salePrice : null,
+      updatedAt: Timestamp.now(),
+    });
+    
+    await updateDoc(docRef, cleanedData);
+  } catch (error: any) {
+    console.error("Error updating product:", error);
+    if (error.code === "permission-denied") {
+      throw new Error("Permission denied. Please check your Firestore security rules allow writes.");
+    }
+    throw error;
+  }
 }
 
 // Delete a product

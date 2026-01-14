@@ -16,6 +16,7 @@ import AdminProductList from "@/components/admin/AdminProductList";
 import ProductFormModal from "@/components/admin/ProductFormModal";
 import { Product } from "@/types/product";
 import { getAllProducts } from "@/lib/products";
+import { isFirebaseConfigured } from "@/lib/firebase";
 
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "ifybeads2024";
 
@@ -47,9 +48,9 @@ export default function AdminPage() {
     try {
       const allProducts = await getAllProducts();
       setProducts(allProducts);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error fetching products:", error);
-      toast.error("Failed to load products");
+      toast.error(error.message || "Failed to load products");
     } finally {
       setLoading(false);
     }
@@ -94,6 +95,38 @@ export default function AdminPage() {
   const inStockProducts = products.filter((p) => !p.isSoldOut).length;
   const onSaleProducts = products.filter((p) => p.isOnSale).length;
   const newArrivals = products.filter((p) => p.isNewArrival).length;
+
+  // Show Firebase configuration error
+  if (!isFirebaseConfigured && isAuthenticated) {
+    return (
+      <main className="min-h-screen bg-cream flex items-center justify-center p-4">
+        <div className="max-w-lg bg-white rounded-3xl shadow-xl p-8 text-center">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span className="text-3xl">⚠️</span>
+          </div>
+          <h1 className="font-display text-2xl font-bold text-brand-900 mb-4">
+            Firebase Not Configured
+          </h1>
+          <p className="font-body text-brand-600 mb-6">
+            Your Firebase environment variables are missing. Please add them to your Vercel project settings:
+          </p>
+          <div className="bg-brand-50 rounded-xl p-4 text-left mb-6">
+            <code className="text-sm text-brand-700 font-mono">
+              NEXT_PUBLIC_FIREBASE_API_KEY<br />
+              NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN<br />
+              NEXT_PUBLIC_FIREBASE_PROJECT_ID<br />
+              NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET<br />
+              NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID<br />
+              NEXT_PUBLIC_FIREBASE_APP_ID
+            </code>
+          </div>
+          <p className="font-body text-sm text-brand-500">
+            Go to Vercel → Your Project → Settings → Environment Variables
+          </p>
+        </div>
+      </main>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
