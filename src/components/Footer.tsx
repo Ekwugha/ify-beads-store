@@ -90,7 +90,8 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-brand-700 text-center">
           <p className="text-brand-300 font-body text-sm">
-            © {new Date().getFullYear()} Ifvy Beads. All rights reserved. Made with{" "}
+            © {new Date().getFullYear()} Ifvy Beads. All rights reserved. 
+            <br />Made with{" "}
             <span className="text-red-500">❤️</span> by{" "}
             <a
               href="https://elochukwu-ekwugha.vercel.app/"
